@@ -7,6 +7,8 @@ import mobileAds from 'react-native-google-mobile-ads';
 import HomeScreen from './src/screens/HomeScreen';
 import GeneratedTypescale from './src/screens/GeneratedTypescale';
 import Settings from './src/screens/Settings';
+import { Provider } from 'react-redux';
+import { store } from './src/redux/store';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +21,8 @@ mobileAds()
 const App = () => {
   const adUnitId = __DEV__ ? TestIds.ADAPTIVE_BANNER : 'ca-app-pub-6894027622437664~3103805329';
   return (
+    
+    <Provider store={store}>
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false} }>
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
@@ -26,6 +30,7 @@ const App = () => {
         <Stack.Screen name="Settings" component={Settings} />
       </Stack.Navigator>
     </NavigationContainer>
+    </Provider>
   )
 }
 

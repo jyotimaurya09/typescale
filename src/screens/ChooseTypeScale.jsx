@@ -4,12 +4,14 @@ import { Provider, Surface, Text } from 'react-native-paper';
 import DropDown from "react-native-paper-dropdown";
 import Icon from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { addTypescale } from '../redux/slices/TypescaleSlice';
 
 const ChooseTypeScale = () => {
 
   const navigation = useNavigation();
 
-  const [scale, setScale] = useState(0);
+  const [scale, setScale] = useState(1.200);
   const [scaleShowDropDown, setScaleShowDropDown] = useState(false);
   const [headingFont, setHeadingFont] = useState('');
   const [showDropDownHF, setShowDropDownHF] = useState(false);
@@ -22,7 +24,7 @@ const ChooseTypeScale = () => {
 
   const [bodyFont, setBodyFont] = useState('');
   const [showDropDownBF, setShowDropDownBF] = useState(false);
-  const [bodySize, setBodySize] = useState(0);
+  const [bodySize, setBodySize] = useState(16);
   const [showDropDownBS, setShowDropDownBS] = useState(false);
   const [bodyWeight, setBodyWeight] = useState(0);
   const [showDropDownBW, setShowDropDownBW] = useState(false);
@@ -31,10 +33,16 @@ const ChooseTypeScale = () => {
   const [bodyLetterSpacing, setBodyLetterSpacing] = useState(99);
   const [showDropDownBLS, setShowDropDownBLS] = useState(false);
 
-  const setValues = ({scale,headingFont, headingWeight, headingLineHeight, headingLetterSpacing,
-    bodyFont, bodySize, bodyWeight, bodyLineHeight, bodyLetterSpacing}) => {
-      // Add to redux global state
-      console.log("Did you see the values");
+  const dispatch = useDispatch();
+
+  const setValues = () => {
+
+    // Add to redux global state
+    dispatch(addTypescale({
+      scale, headingFont, headingWeight, headingLineHeight, headingLetterSpacing,
+      bodyFont, bodySize, bodyWeight, bodyLineHeight, bodyLetterSpacing
+    }))
+    console.log("Did you see the values");
   }
 
   const scaleList = [{ label: "1.067 - Minor Second", value: 1.067 },
@@ -359,14 +367,14 @@ const ChooseTypeScale = () => {
               />
             </Surface>
 
-            
+
 
           </ScrollView>
           <Surface style={styles.buttonContainer} elevation={0}>
-          <TouchableOpacity style={styles.button} onPress={() => {
-            setValues();
-            navigation.navigate('GeneratedTypescale');
-          }}>
+            <TouchableOpacity style={styles.button} onPress={() => {
+              setValues();
+              navigation.navigate('GeneratedTypescale');
+            }}>
               <Text> Generate Typescale</Text>
             </TouchableOpacity>
           </Surface>
