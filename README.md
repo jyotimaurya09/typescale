@@ -23,8 +23,11 @@ Typescale seeks to provide a platform that allows users to create their own cust
 1. Create basic app using npx react-native init typescale
 2. create keys and setup keystore for production and test the working in release mode
 3. revert back to dev mode and install libraries:
-   - react navigation
-   - react-native/stack
+   - react navigation/native
+   - react-native-screens 
+   - react-native-safe-area-context
+   - @react-navigation/native-stack
+   - @react-navigation/bottom-tabs
    - react-native-google-mobile-ads
 4. Setup redux tolkit 
 5. Create UI for App

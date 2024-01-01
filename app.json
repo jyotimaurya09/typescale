@@ -1,4 +1,8 @@
 {
   "name": "typescale",
-  "displayName": "typescale"
+  "displayName": "typescale",
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-6894027622437664~3103805329",
+    "ios_app_id": "ca-app-pub-6894027622437664~3103805329"
+  }
 }
