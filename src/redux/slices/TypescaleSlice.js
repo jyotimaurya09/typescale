@@ -26,10 +26,15 @@ export const typescaleSlice = createSlice({
       state.data = action.payload
     },
     updateTypescale: (state, action) => {
+      console.log("Current action.payload in store : ", action.payload);
       const { key, value } = action.payload;
       state.data.forEach(item => {
         item[key] = value;
       });
+      console.log("Current state.data in store : ", state.data);
+    },
+    getTypescale: (state, action) => {
+      console.log("Inside store: ", state.data);
     },
     refreshTypescale: (state, action) => {
       state.data = [];
@@ -38,6 +43,6 @@ export const typescaleSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addTypescale, updateTypescale, refreshTypescale } = typescaleSlice.actions
+export const { addTypescale, updateTypescale, getTypescale, refreshTypescale } = typescaleSlice.actions
 
 export default typescaleSlice.reducer

@@ -11,36 +11,36 @@ import { addSavedTypescale } from '../redux/slices/SavedTypescale';
 
 
 const GeneratedTypescale = () => {
-  const [value, setValue] = useState('page');
+  const [segmentedButtonVal, setSegmentedButtonVal] = useState('');
 
   const typescale = useSelector((state) => state.typescale);
   const [typescaleItems, setTypescaleItems] = useState(typescale.data || []);
 
   const dispatch = useDispatch();
-  console.log(JSON.stringify(typescale.data));
-  console.log("typescaleItems: ",typescaleItems);
+  //console.log(JSON.stringify(typescale.data));
+  console.log("typescaleItems: ", typescaleItems);
   const navigation = useNavigation();
 
-  useEffect(() => {
-    setTypescaleItems(typescale.data || []);
-  }, [typescale.data]);
 
   return (
     <Surface elevation={3} style={styles.mainContainer}>
       <Surface style={styles.headingContainer} elevation={0}>
+
         <TouchableOpacity style={styles.headingButton} onPress={() => navigation.goBack()}>
           <Icon name="leftcircle" size={32} color={'black'} />
           <Text>Back</Text>
         </TouchableOpacity>
+
         <SegmentedButtons
           style={styles.segmentedButtonStyle}
-          value={value}
-          onValueChange={setValue}
+          value={segmentedButtonVal}
+          onValueChange={setSegmentedButtonVal}
           buttons={[
             { value: 'page', label: 'Landing Page', },
             { value: 'typescale', label: 'Typescale' },
           ]}
         />
+
         <TouchableOpacity style={styles.headingButton} onPress={() => {
           dispatch(addSavedTypescale(typescaleItems))
         }}>
@@ -48,9 +48,10 @@ const GeneratedTypescale = () => {
           <Text>Save</Text>
         </TouchableOpacity>
       </Surface>
+
       <Surface style={styles.bodyContainer}>
         <ScrollView>
-          {value == "page"? <DemoApp items={typescaleItems} />: <CopyValues items={typescaleItems} /> }
+          {segmentedButtonVal === "page" ? <DemoApp itemsData={typescaleItems} /> : <CopyValues items={typescaleItems} />}
         </ScrollView>
       </Surface>
     </Surface >

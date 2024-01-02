@@ -4,8 +4,9 @@ import { Surface, Text } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 
-const DemoApp = ({ items }) => {
-  console.log("Got items inside demo app: ", items)
+const DemoApp = ({ itemsData }) => {
+  console.log("Got items inside demo app: ", itemsData)
+  const items = itemsData[0]
 
   const h1 = parseFloat((items.bodySize * items.scale * items.scale * items.scale * items.scale * items.scale * items.scale).toFixed(2));
   const h2 = parseFloat((items.bodySize * items.scale * items.scale * items.scale * items.scale * items.scale).toFixed(2));
@@ -37,94 +38,93 @@ const DemoApp = ({ items }) => {
           <Icon name="menufold" size={32} color={'gray'} />
         </Surface>
       </Surface>
-      <Surface style={[styles.section1,]} elevation={0}>
-        <Text style={{ fontSize: h1 }}>Your digital transformation begins here</Text>
-      </Surface>
-      <Surface style={styles.section2} elevation={0}>
-        <Text style={{ fontSize: p }}>Unlock the full potential of your business. Start your journey today and experience the future of business software.</Text>
-      </Surface>
-      <Surface style={styles.section3} elevation={0}>
-        <Surface style={styles.buttonContainer} elevation={0}>
-          <Text style={[{ fontSize: p }, styles.button]}>Explore features</Text>
+      <Surface elevation={0} style={{margin: 20}}>
+        <Surface style={[styles.section1,]} elevation={0}>
+          <Text style={{ fontSize: h1 }}>Your digital transformation begins here</Text>
         </Surface>
-        <Surface style={styles.buttonContainer} elevation={0}>
-          <Text style={[{ fontSize: p }, styles.button]}>Get started</Text>
+        <Surface style={styles.section2} elevation={0}>
+          <Text style={{ fontSize: p }}>Unlock the full potential of your business. Start your journey today and experience the future of business software.</Text>
         </Surface>
-      </Surface>
-      <Surface style={styles.section4} elevation={0}>
-        <Text style={{ fontSize: p }}>No credit card required</Text>
-      </Surface>
-
-      <Surface style={styles.section5} elevation={0}>
-        <Image source={
-          require("../images/black-cat.png")
-        } />
-      </Surface>
-      <Surface style={[styles.section6,]} elevation={0}>
-        <Text style={{ fontSize: h2, textAlign: 'center' }}>SaaS solutions that drive results</Text>
-      </Surface>
-      <Surface style={[styles.section7,]} elevation={0}>
-        <Text style={{ fontSize: h4, textAlign: 'center' }}>Explore our suite of powerful software solutions.</Text>
-      </Surface>
-      <Surface style={[styles.section8,]} elevation={0}>
-        <Text style={{ fontSize: h5 }}>Enterprise planning</Text>
-      </Surface>
-      <Surface style={[styles.section9,]} elevation={0}>
-        <Text style={{ fontSize: p }}>Seamlessly manage and integrate all core business functions to optimize efficiency and productivity.</Text>
-      </Surface>
-
-      <Surface style={[styles.section8,]} elevation={0}>
-        <Text style={{ fontSize: h5 }}>Project management</Text>
-      </Surface>
-      <Surface style={[styles.section9,]} elevation={0}>
-        <Text style={{ fontSize: p }}>Ensure project success by efficiently planning, executing, and tracking your initiatives with our project management software.</Text>
-      </Surface>
-
-      <Surface style={[styles.section8,]} elevation={0}>
-        <Text style={{ fontSize: h5 }}>Analytics and reporting</Text>
-      </Surface>
-      <Surface style={[styles.section9,]} elevation={0}>
-        <Text style={{ fontSize: p }}>Leverage data-driven insights to make informed decisions and stay ahead of the competition.</Text>
-      </Surface>
-
-
-      <Surface style={styles.section10} elevation={0}>
-        <Image source={
-          require("../images/worker.png")
-        } />
-      </Surface>
-      <Surface style={[styles.section1,]} elevation={0}>
-        <Text style={{ fontSize: h3 }}>Customization and integration</Text>
-      </Surface>
-      <Surface style={styles.section2} elevation={0}>
-        <Text style={{ fontSize: p }}>Our SaaS solutions are flexible and can be tailored to your specific business requirements. We understand that each organization is unique, and we are committed to delivering software that fits your needs like a glove.</Text>
-      </Surface>
-      <Surface style={[styles.section3, { justifyContent: 'flex-start' }]} elevation={0}>
-        <Surface style={styles.buttonContainer} elevation={0}>
-          <Text style={[{ fontSize: p }, styles.button]}>Learn More</Text>
+        <Surface style={styles.section3} elevation={0}>
+          <Surface style={styles.buttonContainer} elevation={0}>
+            <Text style={[{ fontSize: p }, styles.button]}>Explore features</Text>
+          </Surface>
+          <Surface style={styles.buttonContainer} elevation={0}>
+            <Text style={[{ fontSize: p }, styles.button]}>Get started</Text>
+          </Surface>
         </Surface>
-      </Surface>
-
-      <Surface style={styles.section10} elevation={0}>
-        <Image source={
-          require("../images/support.png")
-        } />
-      </Surface>
-      <Surface style={[styles.section1,]} elevation={0}>
-        <Text style={{ fontSize: h3 }}>Dedicated support</Text>
-      </Surface>
-      <Surface style={styles.section2} elevation={0}>
-        <Text style={{ fontSize: p }}>Zephtor provides ongoing support and training to ensure you maximize the value of our software. Our experts are here to assist you at every step of your digital transformation journey.</Text>
-      </Surface>
-      <Surface style={[styles.section3, { justifyContent: 'flex-start' }]} elevation={0}>
-        <Surface style={styles.buttonContainer} elevation={0}>
-          <Text style={[{ fontSize: p }, styles.button]}>Learn More</Text>
+        <Surface style={styles.section4} elevation={0}>
+          <Text style={{ fontSize: p }}>No credit card required</Text>
         </Surface>
+
+        <Surface style={styles.section5} elevation={0}>
+          <Image source={
+            require("../images/black-cat.png")
+          } />
+        </Surface>
+        <Surface style={[styles.section6,]} elevation={0}>
+          <Text style={{ fontSize: h2, textAlign: 'center' }}>SaaS solutions that drive results</Text>
+        </Surface>
+        <Surface style={[styles.section7,]} elevation={0}>
+          <Text style={{ fontSize: h4, textAlign: 'center' }}>Explore our suite of powerful software solutions.</Text>
+        </Surface>
+        <Surface style={[styles.section8,]} elevation={0}>
+          <Text style={{ fontSize: h5 }}>Enterprise planning</Text>
+        </Surface>
+        <Surface style={[styles.section9,]} elevation={0}>
+          <Text style={{ fontSize: p }}>Seamlessly manage and integrate all core business functions to optimize efficiency and productivity.</Text>
+        </Surface>
+
+        <Surface style={[styles.section8,]} elevation={0}>
+          <Text style={{ fontSize: h5 }}>Project management</Text>
+        </Surface>
+        <Surface style={[styles.section9,]} elevation={0}>
+          <Text style={{ fontSize: p }}>Ensure project success by efficiently planning, executing, and tracking your initiatives with our project management software.</Text>
+        </Surface>
+
+        <Surface style={[styles.section8,]} elevation={0}>
+          <Text style={{ fontSize: h5 }}>Analytics and reporting</Text>
+        </Surface>
+        <Surface style={[styles.section9,]} elevation={0}>
+          <Text style={{ fontSize: p }}>Leverage data-driven insights to make informed decisions and stay ahead of the competition.</Text>
+        </Surface>
+
+        <Surface style={styles.section10} elevation={0}>
+          <Image source={
+            require("../images/worker.png")
+          } />
+        </Surface>
+        <Surface style={[styles.section1,]} elevation={0}>
+          <Text style={{ fontSize: h3 }}>Customization and integration</Text>
+        </Surface>
+        <Surface style={styles.section2} elevation={0}>
+          <Text style={{ fontSize: p }}>Our SaaS solutions are flexible and can be tailored to your specific business requirements. We understand that each organization is unique, and we are committed to delivering software that fits your needs like a glove.</Text>
+        </Surface>
+        <Surface style={[styles.section3, { justifyContent: 'flex-start' }]} elevation={0}>
+          <Surface style={styles.buttonContainer} elevation={0}>
+            <Text style={[{ fontSize: p }, styles.button]}>Learn More</Text>
+          </Surface>
+        </Surface>
+
+        <Surface style={styles.section10} elevation={0}>
+          <Image source={
+            require("../images/support.png")
+          } />
+        </Surface>
+        <Surface style={[styles.section1,]} elevation={0}>
+          <Text style={{ fontSize: h3 }}>Dedicated support</Text>
+        </Surface>
+        <Surface style={styles.section2} elevation={0}>
+          <Text style={{ fontSize: p }}>Zephtor provides ongoing support and training to ensure you maximize the value of our software. Our experts are here to assist you at every step of your digital transformation journey.</Text>
+        </Surface>
+        <Surface style={[styles.section3, { justifyContent: 'flex-start' }]} elevation={0}>
+          <Surface style={styles.buttonContainer} elevation={0}>
+            <Text style={[{ fontSize: p }, styles.button]}>Learn More</Text>
+          </Surface>
+        </Surface>
+
+
       </Surface>
-
-
-
-
 
       <Surface style={[styles.footer,]} elevation={0}>
         <Surface style={styles.headerContainer} elevation={0}>
@@ -174,7 +174,7 @@ export default DemoApp;
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    padding: 10
+    padding: 10,
   },
   headerContainer: {
     marginVertical: 10,
@@ -243,7 +243,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     marginTop: 100,
-    backgroundColor: '#d3d3d3',     
+    backgroundColor: '#d3d3d3',
   },
   table: {
     flexDirection: 'row',

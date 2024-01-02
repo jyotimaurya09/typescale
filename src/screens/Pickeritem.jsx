@@ -1,25 +1,25 @@
 import { Picker } from '@react-native-picker/picker';
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { updateTypescale } from '../redux/slices/TypescaleSlice';
 
-
-const DropdownExample = ({ list, defaultValue, keyVal }) => {
+const DropdownExample = memo(({ list, defaultValue, keyVal }) => {
+    console.log("Component loaded :",keyVal, "     withdefalt value" , defaultValue);
     const [selectedValue, setSelectedValue] = useState(defaultValue);
     const dispatch = useDispatch();
-
-    const setReducerValues = () => {
-        dispatch(updateTypescale({ keyVal, selectedValue }));
-    }
-
+       
     return (
         <>
             <Picker
                 selectedValue={selectedValue}
                 onValueChange={(itemValue, itemIndex) => {
+                    console.log("------------------------------------")
+                    console.log("Item value changed using pickup: ", itemValue);
+                    console.log("------------------------------------")
                     setSelectedValue(itemValue);
-                    setReducerValues();
+                    dispatch(updateTypescale({ key: keyVal, value: itemValue }));
+                    
                 }}
                 style={styles.picker}
             >
@@ -29,15 +29,11 @@ const DropdownExample = ({ list, defaultValue, keyVal }) => {
             </Picker>
         </>
     );
-};
+});
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-    },
     picker: {
-        width: 300,
+        width: 200,
         height: 50,
         borderWidth: 1.5,
         borderColor: '#ccc',

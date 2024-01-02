@@ -8,8 +8,13 @@ import {
   headingLetterSpacingList, bodyFontList, bodySizeList, bodyWeightList,
   bodyLineHeightList, bodyLetterSpacingList
 } from '../constants.js';
+import { useDispatch } from 'react-redux';
+import { getTypescale } from '../redux/slices/TypescaleSlice.js';
 
 const ChooseTypeScale = () => {
+  const dispatch = useDispatch();
+
+  console.log("----------------------------------------------")
   const navigation = useNavigation();
 
   return (
@@ -161,6 +166,12 @@ const ChooseTypeScale = () => {
 
           </ScrollView>
 
+          <TouchableOpacity style={styles.button} onPress={() => {
+            dispatch(getTypescale());
+          }}>
+            <Text>Get Current store data in logs</Text>
+          </TouchableOpacity>
+
           <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('GeneratedTypescale')}>
             <Text> Generate Typescale</Text>
           </TouchableOpacity>
@@ -233,6 +244,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '92%',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    marginBottom: 10
   },
 })
