@@ -45,6 +45,8 @@ com.typescale.app-packageDebugResources-43 C:\Users\JYOTI\Desktop\IndieDev\types
 com.typescale.app-merged_res-44 C:\Users\JYOTI\Desktop\IndieDev\typescale\android\app\build\intermediates\merged_res\debug
 com.typescale.app-debug-45 C:\Users\JYOTI\Desktop\IndieDev\typescale\android\app\src\debug\res
 com.typescale.app-main-46 C:\Users\JYOTI\Desktop\IndieDev\typescale\android\app\src\main\res
-com.typescale.app-packaged_res-47 C:\Users\JYOTI\Desktop\IndieDev\typescale\node_modules\react-native-google-mobile-ads\android\build\intermediates\packaged_res\debug
-com.typescale.app-packaged_res-48 C:\Users\JYOTI\Desktop\IndieDev\typescale\node_modules\react-native-safe-area-context\android\build\intermediates\packaged_res\debug
-com.typescale.app-packaged_res-49 C:\Users\JYOTI\Desktop\IndieDev\typescale\node_modules\react-native-screens\android\build\intermediates\packaged_res\debug
+com.typescale.app-packaged_res-47 C:\Users\JYOTI\Desktop\IndieDev\typescale\node_modules\@react-native-picker\picker\android\build\intermediates\packaged_res\debug
+com.typescale.app-packaged_res-48 C:\Users\JYOTI\Desktop\IndieDev\typescale\node_modules\react-native-google-mobile-ads\android\build\intermediates\packaged_res\debug
+com.typescale.app-packaged_res-49 C:\Users\JYOTI\Desktop\IndieDev\typescale\node_modules\react-native-safe-area-context\android\build\intermediates\packaged_res\debug
+com.typescale.app-packaged_res-50 C:\Users\JYOTI\Desktop\IndieDev\typescale\node_modules\react-native-screens\android\build\intermediates\packaged_res\debug
+com.typescale.app-packaged_res-51 C:\Users\JYOTI\Desktop\IndieDev\typescale\node_modules\react-native-vector-icons\android\build\intermediates\packaged_res\debug
