@@ -2,7 +2,7 @@ import { ScrollView, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { Provider, Surface, Text } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-import DropdownExample from './Pickeritem';
+import DropdownExample from '../components/Pickeritem.jsx';
 import {
   scaleList, headingFontList, headingWeightList, headingLineHeightList,
   headingLetterSpacingList, bodyFontList, bodySizeList, bodyWeightList,
@@ -56,7 +56,6 @@ const ChooseTypeScale = () => {
                 />
               </Surface>
             </Surface>
-
 
             <Surface style={styles.dropdownContainer}>
               <Surface style={styles.container} elevation={0}>
@@ -166,11 +165,12 @@ const ChooseTypeScale = () => {
 
           </ScrollView>
 
+{/** 
           <TouchableOpacity style={styles.button} onPress={() => {
             dispatch(getTypescale());
           }}>
             <Text>Get Current store data in logs</Text>
-          </TouchableOpacity>
+          </TouchableOpacity>*/}
 
           <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('GeneratedTypescale')}>
             <Text> Generate Typescale</Text>

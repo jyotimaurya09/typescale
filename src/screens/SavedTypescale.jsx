@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
-import DropdownExample from './Pickeritem';
+import DropdownExample from '../components/Pickeritem';
 
 const SavedTypescale = () => {
   const typescale = useSelector((state) => state.saved);

@@ -8,10 +8,11 @@ import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import CopyValues from './CopyValues';
 import { addSavedTypescale } from '../redux/slices/SavedTypescale';
+import ShowTypescale from './ShowTypescale';
 
 
 const GeneratedTypescale = () => {
-  const [segmentedButtonVal, setSegmentedButtonVal] = useState('');
+  const [segmentedButtonVal, setSegmentedButtonVal] = useState('page');
 
   const typescale = useSelector((state) => state.typescale);
   const [typescaleItems, setTypescaleItems] = useState(typescale.data || []);
@@ -36,8 +37,9 @@ const GeneratedTypescale = () => {
           value={segmentedButtonVal}
           onValueChange={setSegmentedButtonVal}
           buttons={[
-            { value: 'page', label: 'Landing Page', },
+            { value: 'page', label: 'Demo', },
             { value: 'typescale', label: 'Typescale' },
+            { value: 'code', label: 'Code' },
           ]}
         />
 
@@ -50,9 +52,10 @@ const GeneratedTypescale = () => {
       </Surface>
 
       <Surface style={styles.bodyContainer}>
-        <ScrollView>
-          {segmentedButtonVal === "page" ? <DemoApp itemsData={typescaleItems} /> : <CopyValues items={typescaleItems} />}
-        </ScrollView>
+        {
+          segmentedButtonVal === "page" ? <DemoApp itemsData={typescaleItems} /> :
+            segmentedButtonVal === "typescale" ? <ShowTypescale itemsData={typescaleItems} />
+              : <CopyValues itemsData={typescaleItems} />}
       </Surface>
     </Surface >
   )
@@ -62,14 +65,12 @@ export default GeneratedTypescale
 
 const styles = StyleSheet.create({
   mainContainer: {
-    //backgroundColor: 'blue',
     alignItems: 'center',
     flex: 1,
     padding: 20,
     paddingTop: 40,
   },
   headingContainer: {
-    //backgroundColor: 'green',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
@@ -89,7 +90,6 @@ const styles = StyleSheet.create({
   bodyContainer: {
     flex: 1,
     width: '90%',
-    //paddingVertical: 20,
     backgroundColor: '#CFCFDD',
   },
 })

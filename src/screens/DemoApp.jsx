@@ -1,4 +1,4 @@
-import { Image, StyleSheet } from 'react-native'
+import { Image, ScrollView, StyleSheet } from 'react-native'
 import React from 'react'
 import { Surface, Text } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -28,6 +28,7 @@ const DemoApp = ({ itemsData }) => {
   console.log("small: ", small);
 
   return (
+    <ScrollView>
     <Surface style={styles.mainContainer}>
       <Surface style={styles.headerContainer} elevation={0}>
         <Surface style={styles.leftHeaderConatiner} elevation={0}>
@@ -166,6 +167,7 @@ const DemoApp = ({ itemsData }) => {
       </Surface>
 
     </Surface >
+    </ScrollView>
   )
 }
 
