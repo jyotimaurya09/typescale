@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 
 
 const DemoApp = ({ itemsData }) => {
-  console.log("Got items inside demo app: ", itemsData)
+  //console.log("Got items inside demo app: ", itemsData)
   const items = itemsData[0]
 
   const h1 = parseFloat((items.bodySize * items.scale * items.scale * items.scale * items.scale * items.scale * items.scale).toFixed(2));
@@ -16,7 +16,7 @@ const DemoApp = ({ itemsData }) => {
   const h6 = parseFloat((items.bodySize * items.scale).toFixed(2));
   const p = items.bodySize
   const small = parseFloat((items.bodySize / items.scale).toFixed(2));
-
+/** 
   console.log(typeof p)
   console.log("h1: ", h1);
   console.log("h2: ", h2);
@@ -25,7 +25,7 @@ const DemoApp = ({ itemsData }) => {
   console.log("h5: ", h5);
   console.log("h6: ", h6);
   console.log("p: ", p);
-  console.log("small: ", small);
+  console.log("small: ", small);*/
 
   return (
     <ScrollView>

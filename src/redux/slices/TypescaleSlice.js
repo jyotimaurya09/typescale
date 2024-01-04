@@ -26,15 +26,15 @@ export const typescaleSlice = createSlice({
       state.data = action.payload
     },
     updateTypescale: (state, action) => {
-      console.log("Current action.payload in store : ", action.payload);
+      //console.log("Current action.payload in store : ", action.payload);
       const { key, value } = action.payload;
       state.data.forEach(item => {
         item[key] = value;
       });
-      console.log("Current state.data in store : ", state.data);
+      //console.log("Current state.data in store : ", state.data);
     },
     getTypescale: (state, action) => {
-      console.log("Inside store: ", state.data);
+      //console.log("Inside store: ", state.data);
     },
     refreshTypescale: (state, action) => {
       state.data = [];

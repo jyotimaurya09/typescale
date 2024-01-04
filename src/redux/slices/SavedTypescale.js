@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  data: []
+  data: [],
 }
 
 export const savedTypescaleSlice = createSlice({
@@ -11,8 +11,8 @@ export const savedTypescaleSlice = createSlice({
     addSavedTypescale: (state, action) => {
       const newItem = action.payload[0];
       console.log("++++++++++++++++++++++++++++++++++")
-      console.log("Incoming data payload: ", action.payload);
-      console.log("Current saved data: ", state.data);
+      //console.log("Incoming data payload: ", action.payload);
+      //console.log("Current saved data: ", state.data);
 
       // Check if the incoming item already exists in the array
       const itemExists = state.data.some(existingItem =>
@@ -23,10 +23,12 @@ export const savedTypescaleSlice = createSlice({
         // Item not present, add it to the array
         console.log("Item not present in array");
         state.data.push(newItem);
-        console.log("Item added to Saved: ", state.data);
+        //console.log("Item added to Saved: ", state.data);
+        //state.saved = true;
       } else {
         // Item already present.
         console.log('Item already exists in the array');
+        //state.saved = false;
       }
     },
     removeSavedTypescale: (state, action) => {

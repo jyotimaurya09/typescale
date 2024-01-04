@@ -126,9 +126,6 @@ export const bodyLetterSpacingList = [
 
 
 export const platformList = [
-  { label: "Web - (.scss)", value: "web-scss" },
   { label: "Web - (.css)", value: "web-css" },
-  { label: "Android - (.xml)", value: "android-xml" },
   { label: "React Native - (.css)", value: "react-native-css" },
-  { label: "Flutter - (.dart)", value: "flutter-dart" },
 ]

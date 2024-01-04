@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { updateTypescale } from '../redux/slices/TypescaleSlice';
 
 const DropdownExample = memo(({ list, defaultValue, keyVal }) => {
-    console.log("Component loaded :",keyVal, "     withdefalt value" , defaultValue);
+    //console.log("Component loaded :",keyVal, "     withdefalt value" , defaultValue);
     const [selectedValue, setSelectedValue] = useState(defaultValue);
     const dispatch = useDispatch();
        

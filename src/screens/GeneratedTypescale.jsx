@@ -1,6 +1,6 @@
 import { ScrollView, StyleSheet, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { Surface, Text } from 'react-native-paper';
+import { Snackbar, Surface, Text } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { SegmentedButtons } from 'react-native-paper';
 import DemoApp from './DemoApp';
@@ -9,18 +9,43 @@ import { useDispatch, useSelector } from 'react-redux';
 import CopyValues from './CopyValues';
 import { addSavedTypescale } from '../redux/slices/SavedTypescale';
 import ShowTypescale from './ShowTypescale';
+import { useInterstitialAd, TestIds } from 'react-native-google-mobile-ads';
 
 
 const GeneratedTypescale = () => {
   const [segmentedButtonVal, setSegmentedButtonVal] = useState('page');
 
+  //const savedRedux = useSelector((state) => state.saved);
+  //const [savedStatus, setSavedStatus] = useState(savedRedux.saved || false);
+
   const typescale = useSelector((state) => state.typescale);
   const [typescaleItems, setTypescaleItems] = useState(typescale.data || []);
+  const [message, setMessage] = useState('');
 
   const dispatch = useDispatch();
   //console.log(JSON.stringify(typescale.data));
-  console.log("typescaleItems: ", typescaleItems);
+  //console.log("typescaleItems: ", typescaleItems);
   const navigation = useNavigation();
+
+  const { isLoaded, isClosed, load, show } = useInterstitialAd(TestIds.INTERSTITIAL);
+
+  useEffect(() => {
+    // Start loading the interstitial straight away
+    console.log("Inside Use effect 1");
+    load();
+  }, [load]);
+
+  /** 
+  useEffect(() => {
+    console.log("Inside Use effect 2");
+    if (isClosed) {
+      // Action after the ad is closed
+      setMessage('Item already exists');
+      //navigation.navigate('SavedSuccess'); 
+      //load();
+      //console.log("Ad reloaded")
+    }
+  }, [isClosed, navigation]);*/
 
 
   return (
@@ -44,12 +69,21 @@ const GeneratedTypescale = () => {
         />
 
         <TouchableOpacity style={styles.headingButton} onPress={() => {
-          dispatch(addSavedTypescale(typescaleItems))
+          if (isLoaded) {
+            show();
+          }
+          else {
+            console.log("Ad was not loaded!!!")
+          }
+
+          dispatch(addSavedTypescale(typescaleItems));
         }}>
           <Icon name="save" size={32} color={'gray'} />
           <Text>Save</Text>
         </TouchableOpacity>
       </Surface>
+      
+
 
       <Surface style={styles.bodyContainer}>
         {

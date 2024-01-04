@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Provider, Surface, Text } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import DropdownExample from '../components/Pickeritem.jsx';
@@ -10,10 +10,17 @@ import {
 } from '../constants.js';
 import { useDispatch } from 'react-redux';
 import { getTypescale } from '../redux/slices/TypescaleSlice.js';
+import { BannerAd, BannerAdSize, MobileAds, RewardedAd, RewardedAdEventType, TestIds } from 'react-native-google-mobile-ads';
+
+MobileAds()
+  .initialize()
+  .then(adapterStatuses => {
+    // Initialization complete!
+  });
 
 const ChooseTypeScale = () => {
+  const adUnitIdBanner = __DEV__ ? TestIds.ADAPTIVE_BANNER : 'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyyyyyyy';
   const dispatch = useDispatch();
-
   console.log("----------------------------------------------")
   const navigation = useNavigation();
 
@@ -29,9 +36,15 @@ const ChooseTypeScale = () => {
             <Text>Choose your Preference</Text>
           </Surface>
 
+          <Surface style={{ width: '90%' }}>
+            <BannerAd
+              unitId={adUnitIdBanner}
+              size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+            />
+          </Surface>
           <ScrollView style={styles.scrollViewContainer}>
 
-            <Surface style={styles.dropdownContainer}>
+            <Surface style={[styles.dropdownContainer, { marginTop: 0 }]}>
               <Surface style={styles.container} elevation={0}>
                 <Text style={styles.dropdownTitle}>Scale</Text>
               </Surface>
@@ -165,14 +178,21 @@ const ChooseTypeScale = () => {
 
           </ScrollView>
 
-{/** 
+          {/** 
           <TouchableOpacity style={styles.button} onPress={() => {
             dispatch(getTypescale());
           }}>
             <Text>Get Current store data in logs</Text>
           </TouchableOpacity>*/}
 
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('GeneratedTypescale')}>
+          <TouchableOpacity style={styles.button} onPress={() => {
+
+            console.log("Add running");
+            //rewarded.show();
+            navigation.navigate('GeneratedTypescale')
+          }
+          }
+          >
             <Text> Generate Typescale</Text>
           </TouchableOpacity>
 
@@ -245,6 +265,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '92%',
     alignSelf: 'center',
-    marginBottom: 10
+    marginBottom: 10,
+    marginTop: 10
   },
 })
