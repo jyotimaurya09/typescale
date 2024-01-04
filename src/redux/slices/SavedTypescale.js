@@ -32,6 +32,7 @@ export const savedTypescaleSlice = createSlice({
       }
     },
     removeSavedTypescale: (state, action) => {
+      console.log("Payload recieved from delete: ", action.payload)
       const itemToRemove = action.payload;
       // Remove the item from the array
       state.data = state.data.filter(existingItem =>
