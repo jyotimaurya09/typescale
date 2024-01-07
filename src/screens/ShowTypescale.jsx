@@ -6,7 +6,7 @@ import Dropdown from '../components/Dropdown'
 
 const ShowTypescale = ({ itemsData }) => {
 
-  console.log("Got items inside Show typescale app: ", itemsData)
+  //console.log("Got items inside Show typescale app: ", itemsData)
   const items = itemsData[0];
 
 

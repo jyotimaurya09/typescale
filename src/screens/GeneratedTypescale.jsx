@@ -31,13 +31,13 @@ const GeneratedTypescale = () => {
 
   useEffect(() => {
     // Start loading the interstitial straight away
-    console.log("Inside Use effect 1");
+    //console.log("Inside Use effect 1");
     load();
   }, [load]);
 
   /** 
   useEffect(() => {
-    console.log("Inside Use effect 2");
+    //console.log("Inside Use effect 2");
     if (isClosed) {
       // Action after the ad is closed
       setMessage('Item already exists');
@@ -73,7 +73,7 @@ const GeneratedTypescale = () => {
             show();
           }
           else {
-            console.log("Ad was not loaded!!!")
+            //console.log("Ad was not loaded!!!")
           }
 
           dispatch(addSavedTypescale(typescaleItems));

@@ -10,7 +10,7 @@ export const savedTypescaleSlice = createSlice({
   reducers: {
     addSavedTypescale: (state, action) => {
       const newItem = action.payload[0];
-      console.log("++++++++++++++++++++++++++++++++++")
+      //console.log("++++++++++++++++++++++++++++++++++")
       //console.log("Incoming data payload: ", action.payload);
       //console.log("Current saved data: ", state.data);
 
@@ -21,18 +21,18 @@ export const savedTypescaleSlice = createSlice({
 
       if (!itemExists) {
         // Item not present, add it to the array
-        console.log("Item not present in array");
+        //console.log("Item not present in array");
         state.data.push(newItem);
         //console.log("Item added to Saved: ", state.data);
         //state.saved = true;
       } else {
         // Item already present.
-        console.log('Item already exists in the array');
+        //console.log('Item already exists in the array');
         //state.saved = false;
       }
     },
     removeSavedTypescale: (state, action) => {
-      console.log("Payload recieved from delete: ", action.payload)
+      //console.log("Payload recieved from delete: ", action.payload)
       const itemToRemove = action.payload;
       // Remove the item from the array
       state.data = state.data.filter(existingItem =>

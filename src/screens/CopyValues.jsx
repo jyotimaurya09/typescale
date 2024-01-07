@@ -13,6 +13,30 @@ const CopyValues = ({ itemsData }) => {
   const [platform, setPlatform] = useState('web-css');
   const [copiedText, setCopiedText] = useState('');
 
+  const items = itemsData[0];
+
+  const calculateValues = () => {
+    const h1 = parseFloat((items.bodySize * items.scale * items.scale * items.scale * items.scale * items.scale * items.scale).toFixed(2));
+    const h2 = parseFloat((items.bodySize * items.scale * items.scale * items.scale * items.scale * items.scale).toFixed(2));
+    const h3 = parseFloat((items.bodySize * items.scale * items.scale * items.scale * items.scale).toFixed(2));
+    const h4 = parseFloat((items.bodySize * items.scale * items.scale * items.scale).toFixed(2));
+    const h5 = parseFloat((items.bodySize * items.scale * items.scale).toFixed(2));
+    const h6 = parseFloat((items.bodySize * items.scale).toFixed(2));
+    const p = items.bodySize
+    const large = parseFloat((items.bodySize * items.scale).toFixed(2));
+    const small = parseFloat((items.bodySize / items.scale).toFixed(2));
+    const headingLineHeight = items.headingLineHeight;
+    const bodyLineHeight = items.bodyLineHeight;
+    const headingLetterSpacing = items.headingLetterSpacing;
+    const bodyLetterSpacing = items.bodyLetterSpacing;
+    const headingWeight = items.headingWeight;
+    const bodyWeight = items.bodyWeight;
+    return { h1, h2, h3, h4, h5, h6, p, small, large, headingLineHeight, bodyLineHeight, headingLetterSpacing, bodyLetterSpacing, headingWeight, bodyWeight }
+  }
+
+  const { h1, h2, h3, h4, h5, h6, p, small, large, headingLineHeight, bodyLineHeight, headingLetterSpacing, bodyLetterSpacing, headingWeight, bodyWeight } = calculateValues();
+
+
   useEffect(() => {
     let textToCopy;
 
@@ -33,13 +57,47 @@ const CopyValues = ({ itemsData }) => {
 
   const renderCodeWebCss = () => {
 
-    const newText = webCss;
-    return newText
+    let textToCopy = webCss;
+    textToCopy = textToCopy.replace("HEADINGWEIGHT", headingWeight);
+    textToCopy = textToCopy.replace("HEADINGFONTSTYLE", "calibri");
+    textToCopy = textToCopy.replace("HEADINGLETTERSPACING", headingLetterSpacing);
+    textToCopy = textToCopy.replace("HEADINGLINEHEIGHT", headingLineHeight);
+    textToCopy = textToCopy.replace("H1FONT", h1);
+    textToCopy = textToCopy.replace("H2FONT", h2);
+    textToCopy = textToCopy.replace("H3FONT", h3);
+    textToCopy = textToCopy.replace("H4FONT", h4);
+    textToCopy = textToCopy.replace("H5FONT", h5);
+    textToCopy = textToCopy.replace("H6FONT", h6);
+    textToCopy = textToCopy.replace("BODYWEIGHT", bodyWeight);
+    textToCopy = textToCopy.replace("BODYFONTSTYLE", "calibri");
+    textToCopy = textToCopy.replace("BODYLETTERSPACING", bodyLetterSpacing);
+    textToCopy = textToCopy.replace("BODYLINEHEIGHT", bodyLineHeight);
+    textToCopy = textToCopy.replace("PSIZE", p);
+    textToCopy = textToCopy.replace("SMALLSIZE", small);
+    console.log("Text to copy: ", textToCopy);
+    return textToCopy
   }
 
   const renderCodeReactNativeCss = () => {
-    const newText = reactFile;
-    return newText
+    let textToCopy = reactFile;
+    textToCopy = textToCopy.replace(/HEADINGWEIGHT/g, headingWeight);
+    textToCopy = textToCopy.replace(/HEADINGFONTSTYLE/g, "calibri");
+    textToCopy = textToCopy.replace(/HEADINGLETTERSPACING/g, headingLetterSpacing);
+    textToCopy = textToCopy.replace(/HEADINGLINEHEIGHT/g, headingLineHeight);
+    textToCopy = textToCopy.replace("H1FONT", h1);
+    textToCopy = textToCopy.replace("H2FONT", h2);
+    textToCopy = textToCopy.replace("H3FONT", h3);
+    textToCopy = textToCopy.replace("H4FONT", h4);
+    textToCopy = textToCopy.replace("H5FONT", h5);
+    textToCopy = textToCopy.replace("H6FONT", h6);
+    textToCopy = textToCopy.replace(/BODYWEIGHT/g, bodyWeight);
+    textToCopy = textToCopy.replace(/BODYFONTSTYLE/g, "calibri");
+    textToCopy = textToCopy.replace(/BODYLETTERSPACING/g, bodyLetterSpacing);
+    textToCopy = textToCopy.replace(/BODYLINEHEIGHT/g, bodyLineHeight);
+    textToCopy = textToCopy.replace("PSIZE", p);
+    textToCopy = textToCopy.replace("SMALLSIZE", small);
+    console.log("Text to copy: ", textToCopy);
+    return textToCopy
   }
 
   const changePreferenceValues = () => {
@@ -69,10 +127,10 @@ const CopyValues = ({ itemsData }) => {
           <Icon name="copy1" size={26} color={'gray'} />
         </TouchableOpacity>
         <Text>
-        {platform === 'web-css' ? renderCodeWebCss()
-          : platform === 'react-native-css' ? renderCodeReactNativeCss()
-            :          "Something went wrong"
-        }
+          {platform === 'web-css' ? renderCodeWebCss()
+            : platform === 'react-native-css' ? renderCodeReactNativeCss()
+              : "Something went wrong"
+          }
         </Text>
 
       </Surface>

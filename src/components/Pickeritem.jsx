@@ -14,9 +14,9 @@ const DropdownExample = memo(({ list, defaultValue, keyVal }) => {
             <Picker
                 selectedValue={selectedValue}
                 onValueChange={(itemValue, itemIndex) => {
-                    console.log("------------------------------------")
-                    console.log("Item value changed using pickup: ", itemValue);
-                    console.log("------------------------------------")
+                    //console.log("------------------------------------")
+                    //console.log("Item value changed using pickup: ", itemValue);
+                    //console.log("------------------------------------")
                     setSelectedValue(itemValue);
                     dispatch(updateTypescale({ key: keyVal, value: itemValue }));
                     

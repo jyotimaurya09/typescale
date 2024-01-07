@@ -21,7 +21,7 @@ MobileAds()
 const ChooseTypeScale = () => {
   const adUnitIdBanner = __DEV__ ? TestIds.ADAPTIVE_BANNER : 'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyyyyyyy';
   const dispatch = useDispatch();
-  console.log("----------------------------------------------")
+  //console.log("----------------------------------------------")
   const navigation = useNavigation();
 
   return (
@@ -187,7 +187,7 @@ const ChooseTypeScale = () => {
 
           <TouchableOpacity style={styles.button} onPress={() => {
 
-            console.log("Add running");
+            //console.log("Add running");
             //rewarded.show();
             navigation.navigate('GeneratedTypescale')
           }
